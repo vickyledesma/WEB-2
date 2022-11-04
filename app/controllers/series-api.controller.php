@@ -1,5 +1,5 @@
 <?php
-require_once './app/models/task.model.php';
+require_once './app/models/series.model.php';
 require_once './app/views/api.view.php';
 
 class SeriesApiController {
@@ -19,19 +19,14 @@ class SeriesApiController {
     }
 
     public function getTasks($params = null) {
-        if($_GET["sort"] == "ASC"){
+        if($_GET["order"] == "ASC"){
             $series = $this->model->orderAsc();
-        }elseif($_GET["sort"] == "DESC"){
+        }elseif($_GET["order"] == "DESC"){
             $series = $this->model->orderDesc();
         } else{
         $series = $this->model->getseries();
         }
-        return $this->view->response($properties, 200);
-    }
-    }
-    public function ordenseries($params = null) {
-        $series = $this->model->ordendesc();
-        $this->view->response($series);
+        return $this->view->response($series, 200);
     }
 
     public function getTask($params = null) {
@@ -65,7 +60,7 @@ class SeriesApiController {
             $this->view->response($series, 201);
         }
     
-
+    }
      public function updateTask($params = null) {
         $id = $params[':ID'];
          $data = $this->getData();
