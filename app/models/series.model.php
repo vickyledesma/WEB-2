@@ -45,18 +45,36 @@ class SeriesModel {
     }    
         
     
-    public function orderASCid(){
+    public function ordenASCid(){
         $query = $this->db->prepare("SELECT * FROM series ORDER BY id ASC");
         $query->execute();
         $series= $query->fetchAll(PDO::FETCH_OBJ);
         return $series;
     }
 
-    public function orderDESCid(){
+    public function ordenDESCid(){
         $query = $this->db->prepare("SELECT * FROM series ORDER BY id DESC");
         $query->execute(); 
         $series= $query->fetchAll(PDO::FETCH_OBJ);
+        return $series;   
+    }
+    public function ordenASCgenero(){
+        $query = $this->db->prepare("SELECT * FROM series ORDER BY genero ASC");
+        $query->execute(); 
+        $series= $query->fetchAll(PDO::FETCH_OBJ);
+        return $series;   
+    }
+    public function ordenDESCgenero(){
+        $query = $this->db->prepare("SELECT * FROM series ORDER BY genero DESC");
+        $query->execute(); 
+        $series= $query->fetchAll(PDO::FETCH_OBJ);
+        return $series;   
+    }
+    public function ShowByType($genero){
+        $query = $this->db->prepare("SELECT * FROM series WHERE genero = ?");
+        $query->execute([$genero]);
+        $series= $query->fetchAll(PDO::FETCH_OBJ);
         return $series;
-    
+    }
 }
-}
+
