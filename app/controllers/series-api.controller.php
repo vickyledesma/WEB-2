@@ -29,16 +29,16 @@ class SeriesApiController {
                 }
             }
             //ORDENAR POR GENERO
-            elseif($_GET["sort"] == "genero"){
-                if($_GET['order']=="ASC")
+            elseif($_GET["sort"] == "genero" ‖ $_GET['sort']=="GENERO"){
+                if($_GET['order']=="ASC"  ‖ $_GET["order"] == "asc")
                     $series = $this->model->ordenASCgenero();
-                elseif ($_GET["order"] == "DESC") {
+                elseif ($_GET["order"] == "DESC" ‖ $_GET["order"] == "desc" ) {
                   $series = $this->model->ordenDESCgenero();
                 }
             }
         }
-        elseif(isset($_GET['filterByType'])){
-            $series = $this->model->ShowByType($_GET['filterByType']);
+        elseif(isset($_GET['filterbyGenre'])){
+            $series = $this->model->ShowByType($_GET['filterByGenre']);
         }
       else{
          $series = $this->model->getSeries();
