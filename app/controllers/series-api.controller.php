@@ -20,22 +20,21 @@ class SeriesApiController {
 
     public function getSeries($params = null) {
         if(isset($_GET['order'])&& isset($_GET['sort'])){
-            //ORDENAR POR ID
-            if($_GET['sort']=="id" ‖ $_GET['sort']=="ID"){ 
-                if($_GET['order']=="ASC" ‖ $_GET["order"] == "asc"){
+            if(($_GET['sort']=="id") || ($_GET['sort']=="ID")){ 
+                if(($_GET['order']=="ASC" ) || ($_GET["order"] == "asc")){
                     $series = $this->model->ordenASCid();
-                }elseif ($_GET["order"] == "DESC" ‖ $_GET["order"] == "desc" ) {  
+                }
+                elseif (($_GET["order"] == "DESC") || ($_GET["order"] == "desc" )) {  
                   $series = $this->model->ordenDESCid();
                 }
             }
-            //ORDENAR POR GENERO
-            elseif($_GET["sort"] == "genero" ‖ $_GET['sort']=="GENERO"){
-                if($_GET['order']=="ASC"  ‖ $_GET["order"] == "asc")
-                    $series = $this->model->ordenASCgenero();
-                elseif ($_GET["order"] == "DESC" ‖ $_GET["order"] == "desc" ) {
-                  $series = $this->model->ordenDESCgenero();
+                elseif(($_GET["sort"] == "genero")||($_GET['sort']=="GENERO")){
+                    if(($_GET['order']=="ASC") || ($_GET["order"] == "asc"))
+                        $series = $this->model->ordenASCgenero();
+                    elseif (($_GET["order"] == "DESC") || ($_GET["order"] == "desc")) {
+                    $series = $this->model->ordenDESCgenero();
+                    }
                 }
-            }
         }
         elseif(isset($_GET['filterbyGenre'])){
             $series = $this->model->ShowByType($_GET['filterByGenre']);
