@@ -18,18 +18,35 @@ class SeriesApiController {
         return json_decode($this->data);
     }
 
-    public function getTasks($params = null) {
-        if($_GET["order"] == "ASC"){
-            $series = $this->model->orderAsc();
-        }elseif($_GET["order"] == "DESC"){
-            $series = $this->model->orderDesc();
-        } else{
-        $series = $this->model->getseries();
+    public function getSeries($params = null) {
+        if(isset($_GET['order'])&& isset($_GET['sort'])){
+            if($_GET['sort']=="id"){ 
+                if($_GET['order']=="ASC"){
+                    $series = $this->model->ordenASCid();
+                }elseif ($_GET["order"] == "DESC") {
+                    var_dump("hola");
+                  $series = $this->model->ordenDESCid();
+                }
+            }
+            elseif($_GET["sort"] == "genero"){
+                if($_GET['order']=="ASC")
+                    $series = $this->model->ordenASCgenero();
+                elseif ($_GET["order"] == "DESC") {
+                  $series = $this->model->ordenDESCgenero();
+                }
+            }
         }
-        return $this->view->response($series, 200);
-    }
+        elseif(isset($_GET['filterByType'])){
+            $series = $this->model->ShowByType($_GET['filterByType']);
+        }
+      else{
+         $series = $this->model->getSeries();
+      } 
+    
+    return $this->view->response($series, 200);
 
-    public function getTask($params = null) {
+}
+    public function getSerie($params = null) {
         $id = $params[':ID'];
         $series = $this->model->id($id);
         if ($series)
@@ -38,7 +55,7 @@ class SeriesApiController {
             $this->view->response("La tarea con el id=$id no existe", 404);
     }
 
-    public function deleteTask($params = null) {
+    public function deleteSerie($params = null) {
         $id = $params[':ID'];
 
         $series = $this->model->id($id);
@@ -49,7 +66,7 @@ class SeriesApiController {
             $this->view->response("La tarea con el id=$id no existe", 404);
     }
 
-    public function insertTask($params = null) {
+    public function insertSerie($params = null) {
         $series = $this->getData();
 
         if (empty($series->titulo) || empty($series->genero) || empty($series->descripcion)) {
@@ -61,7 +78,7 @@ class SeriesApiController {
         }
     
     }
-     public function updateTask($params = null) {
+     public function updateSerie($params = null) {
         $id = $params[':ID'];
          $data = $this->getData();
                 
