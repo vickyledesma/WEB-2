@@ -20,14 +20,15 @@ class SeriesApiController {
 
     public function getSeries($params = null) {
         if(isset($_GET['order'])&& isset($_GET['sort'])){
-            if($_GET['sort']=="id"){ 
-                if($_GET['order']=="ASC"){
+            //ORDENAR POR ID
+            if($_GET['sort']=="id" ‖ $_GET['sort']=="ID"){ 
+                if($_GET['order']=="ASC" ‖ $_GET["order"] == "asc"){
                     $series = $this->model->ordenASCid();
-                }elseif ($_GET["order"] == "DESC") {
-                    var_dump("hola");
+                }elseif ($_GET["order"] == "DESC" ‖ $_GET["order"] == "desc" ) {  
                   $series = $this->model->ordenDESCid();
                 }
             }
+            //ORDENAR POR GENERO
             elseif($_GET["sort"] == "genero"){
                 if($_GET['order']=="ASC")
                     $series = $this->model->ordenASCgenero();
