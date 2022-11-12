@@ -37,7 +37,7 @@ class SeriesModel {
         $query->execute([$titulo,$genero,$descripcion,$id]);
    
     }
-    function buscargenero($genre){
+    function  ShowByType($genre){
         $query = $this->db->prepare("SELECT * FROM series JOIN generos ON series.genero = generos.id AND generos.id = ?");
         $query->execute([$genre]);
         $genre= $query->fetchAll(PDO::FETCH_OBJ);
@@ -70,11 +70,7 @@ class SeriesModel {
         $series= $query->fetchAll(PDO::FETCH_OBJ);
         return $series;   
     }
-    public function ShowByType($genero){
-        $query = $this->db->prepare("SELECT * FROM series WHERE genero = ?");
-        $query->execute([$genero]);
-        $series= $query->fetchAll(PDO::FETCH_OBJ);
-        return $series;
-    }
+   
+    
 }
 
