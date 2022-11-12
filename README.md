@@ -29,7 +29,7 @@ URL:https://localhost/WEB-2/api/series/ID
     "descripcion": "amigos que lloran",
     "genero": 4
 }
-Edita una serie, trayendo la serie con GET para luego realizar la edicion deseada. 
+Edita una serie, seleccionandola por su id para luego realizar la edicion deseada. 
 
 URL:https://localhost/WEB-2/api/series&sort=columna&order=ASC/DESC
 method: GET.
