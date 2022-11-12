@@ -18,8 +18,8 @@ class SeriesApiController {
         return json_decode($this->data);
     }
 
-    public function getSeries($params = null) {
-        if(isset($_GET['order'])&& isset($_GET['sort'])){
+    public function TraigoSeries($params = null) {
+        if(isset($_GET['sort']) && isset($_GET['order'])){
             if(($_GET['sort']=="id") || ($_GET['sort']=="ID")){ 
                 if(($_GET['order']=="ASC" ) || ($_GET["order"] == "asc")){
                     $series = $this->model->ordenASCid();
@@ -35,8 +35,8 @@ class SeriesApiController {
     
     return $this->view->response($series, 200);
 
-}
-    public function getSerie($params = null) {
+    }
+    public function Traigoserie($params = null) {
         $id = $params[':ID'];
         $series = $this->model->id($id);
         if ($series)
@@ -45,7 +45,7 @@ class SeriesApiController {
             $this->view->response("La serie con el id=$id no existe", 404);
     }
 
-    public function deleteSerie($params = null) {
+    public function BorroSerie($params = null) {
         $id = $params[':ID'];
 
         $series = $this->model->id($id);
@@ -56,7 +56,7 @@ class SeriesApiController {
             $this->view->response("La serie con el id=$id no existe", 404);
     }
 
-    public function insertSerie($params = null) {
+    public function AgregoSerie($params = null) {
         $series = $this->getData();
 
         if (empty($series->titulo) || empty($series->genero) || empty($series->descripcion)) {
@@ -68,7 +68,7 @@ class SeriesApiController {
         }
     
     }
-     public function updateSerie($params = null) {
+     public function ActualizoSerie($params = null) {
         $id = $params[':ID'];
         $data = $this->getData();
                 
