@@ -5,12 +5,12 @@ URL:https://localhost/WEB-2/api/series
 method: GET.
 Trae la base de datos "Series".
 
-URL:https://localhost/WEB-2/api/series/ID
+URL:https://localhost/WEB-2/api/series/:ID
 method: GET.
 Trae la serie que le indiques por su id.
 
 • Metodo DELETE: 
-URL:https://localhost/WEB-2/api/series/ID 
+URL:https://localhost/WEB-2/api/series/:ID 
 method: DELETE.
 Borra la serie que le indiques por su id.
 
@@ -26,7 +26,7 @@ URL:https://localhost/WEB-2/api/series
 Agrega un serie a la base de datos, se hace insertando los datos en el body como se ve en el ejemplo de arriba. 
 
 • Metodo PUT: 
-URL:https://localhost/WEB-2/api/series/ID 
+URL:https://localhost/WEB-2/api/series/:ID 
  method: PUT.
  body:
 {
