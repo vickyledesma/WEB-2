@@ -20,7 +20,7 @@
 • Metodo PUT:
 
 
-    GET	      /series/:ID	            • Edita serie seleccionada por id. 
+    PUT	      /series/:ID	            • Edita serie seleccionada por id. 
 
 • ORDENAMIENTO:
 
