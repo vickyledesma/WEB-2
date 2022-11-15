@@ -3,11 +3,11 @@ URL:https://localhost/WEB-2/api/series
 method: GET.
 Trae la base de datos "Series".
 
-URL:https://localhost/WEB-2/api/series/ID
+URL:https://localhost/WEB-2/api/series/:ID
 method: GET.
 Trae la serie que le indiques por su id.
 
-URL:https://localhost/WEB-2/api/series/ID 
+URL:https://localhost/WEB-2/api/series/:ID 
 method: DELETE.
 Borra la serie que le indiques por su id.
 
@@ -21,7 +21,7 @@ URL:https://localhost/WEB-2/api/series
 }
 Agrega un serie a la base de datos, se hace insertando los datos en el body como se ve en el ejemplo de arriba. 
 
-URL:https://localhost/WEB-2/api/series/ID 
+URL:https://localhost/WEB-2/api/series/:ID 
  method: PUT.
  body:
 {
@@ -31,7 +31,7 @@ URL:https://localhost/WEB-2/api/series/ID
 }
 Edita una serie, seleccionandola por su id para luego realizar la edicion deseada. 
 
-URL:https://localhost/WEB-2/api/series&sort=columna&order=ASC/DESC
+URL:https://localhost/WEB-2/api/series?sort=campo&order=ASC/DESC
 method: GET.
 Sort indica la columna que deseas ordenar y order la manera en la que van a ser ordenados los datos. 
 En este tp, solo se puede ordenar mediante la columna ID. 

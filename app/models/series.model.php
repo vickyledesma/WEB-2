@@ -7,7 +7,7 @@ class SeriesModel {
     public function __construct() {
         $this->db = new PDO('mysql:host=localhost;'.'dbname=series;charset=utf8', 'root', '');
     }
-    function getseries() {  
+    function series() {  
         $query = $this->db->prepare("SELECT * FROM series");
         $query->execute();
         $series = $query->fetchAll(PDO::FETCH_OBJ); 
@@ -27,7 +27,7 @@ class SeriesModel {
         $id = $query->fetch(PDO::FETCH_OBJ);
         return $id;
     }
-    function borrarserieid($id) {
+    function borrarserie($id) {
         $query = $this->db->prepare('DELETE FROM series WHERE id = ?');
         $query->execute([$id]);
     }
@@ -37,14 +37,6 @@ class SeriesModel {
         $query->execute([$titulo,$genero,$descripcion,$id]);
    
     }
-    function  ShowByType($genre){
-        $query = $this->db->prepare("SELECT * FROM series JOIN generos ON series.genero = generos.id AND generos.id = ?");
-        $query->execute([$genre]);
-        $genre= $query->fetchAll(PDO::FETCH_OBJ);
-        return $genre;
-    }    
-        
-    
     public function ordenASCid(){
         $query = $this->db->prepare("SELECT * FROM series ORDER BY id ASC");
         $query->execute();
@@ -58,19 +50,6 @@ class SeriesModel {
         $series= $query->fetchAll(PDO::FETCH_OBJ);
         return $series;   
     }
-    public function ordenASCgenero(){
-        $query = $this->db->prepare("SELECT * FROM series ORDER BY genero ASC");
-        $query->execute(); 
-        $series= $query->fetchAll(PDO::FETCH_OBJ);
-        return $series;   
-    }
-    public function ordenDESCgenero(){
-        $query = $this->db->prepare("SELECT * FROM series ORDER BY genero DESC");
-        $query->execute(); 
-        $series= $query->fetchAll(PDO::FETCH_OBJ);
-        return $series;   
-    }
-   
     
 }
 

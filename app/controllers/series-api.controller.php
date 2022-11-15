@@ -14,7 +14,7 @@ class SeriesApiController {
         $this->data = file_get_contents("php://input");
     }
 
-    private function getData() {
+    private function Data() {
         return json_decode($this->data);
     }
 
@@ -30,10 +30,11 @@ class SeriesApiController {
             }
         }
         else{
-         $series = $this->model->getSeries();
-        } 
-    
-    return $this->view->response($series, 200);
+         $series = $this->model->series();
+        }
+         
+        return $this->view->response($series, 200);
+        
 
     }
     public function Traigoserie($params = null) {
@@ -57,7 +58,7 @@ class SeriesApiController {
     }
 
     public function AgregoSerie($params = null) {
-        $series = $this->getData();
+        $series = $this->Data();
 
         if (empty($series->titulo) || empty($series->genero) || empty($series->descripcion)) {
             $this->view->response("Complete los datos", 400);
@@ -70,7 +71,7 @@ class SeriesApiController {
     }
      public function ActualizoSerie($params = null) {
         $id = $params[':ID'];
-        $data = $this->getData();
+        $data = $this->Data();
                 
          $series = $this->model->id($id);
          if ($series) {
